@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "pm_2305",
+      "fullName": "Peace Maker",
+      "password": "Pm@2305.",
+      "status": "Signed Out",
+      "lists": [],
+      "tasks": [
+        {
+          "id": 1,
+          "work": "working",
+          "done": false,
+          "date": "2023-11-30"
+        }
+      ]
+    }
+  ]
+}

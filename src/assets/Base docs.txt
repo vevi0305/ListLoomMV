@@ -1,0 +1,453 @@
+Day 1 = 26/10/23 
+we can install react in two types,
+
+one : automatic installation using vite
+
+Install tailwind css in react using installation link 
+go to framework guides and choose vite then do the magic
+
+
+two : manual installation
+
+first step:
+
+    mkdir my-react-project
+    cd my-react-project
+    npm init -y
+    npm install react react-dom
+
+second ste
+we need to set the project like this
+
+    my-react-project/
+    ├── src/
+    │   ├── components/
+    │   │   ├── App.js
+    │   │   └── Home.js
+    │   ├── index.js
+    │   └── index.css
+    ├── package.json
+    └── webpack.config.js
+
+
+third step:
+
+install webpack packages
+
+npm install webpack webpack-cli webpack-dev-server html-webpack-plugin --save-dev
+
+
+fourth step:
+
+config the webpack config file
+
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  devServer: {
+    contentBase: './dist',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+};
+
+in this input/entry point will be input.js
+
+output stored in dist/bundle.js
+
+
+fifth step:
+
+create a html template like this.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React App</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="file"></script>
+</body>
+</html>
+
+
+sixth step :
+
+install babel package 
+
+npm install @babel/core @babel/preset-react @babel/preset-env babel-loader --save-dev
+
+
+
+seventh step:
+
+create .babelrc in your directory and insert this file
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+
+
+
+eighth step:
+
+install react router tailwind and config tailwind
+
+npm install react-router-dom
+npm install tailwindcss postcss-cli autoprefixer --save-dev
+npx tailwindcss init -p
+npm install -g json-server cross-env
+npm install concurrently --save-dev
+npm install dayjs
+npx json-server -p 2305 -w Db/db.json
+
+
+
+nineth step:
+
+insert or type all the neccesary details in appropriate files
+
+index.js or any input js file
+
+  import React from 'react'
+  import ReactDOM from 'react-dom/client'
+  import App from './App.jsx'
+  import './index.css'
+
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  )
+
+in tailwind config file
+
+	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	theme: {
+		extend: {
+			fontFamily: {
+				poppins: "Poppins,sans-serif",
+			},
+		},
+	},
+
+default font is poppins 
+insert in index.css
+
+paste this code in first line
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+Icons
+
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+<script type="module" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.js"></script>
+
+insert in html 
+
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    body {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+</style>
+
+insert them in index.css
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+if you want to customize your check box, use this code and change your color
+input[type="checkbox"] {
+	@apply w-8 h-8 min-w-fit appearance-none border rounded-md;
+}
+
+input[type="checkbox"]:checked {
+	@apply bg-white border-orange-500;
+}
+
+input[type="checkbox"]:checked::before {
+	@apply content-['✔'] text-orange-500 text-4xl;
+}
+
+
+
+Del unwanted files like app.css
+logo.svg
+
+
+
+Tenth Step:
+
+all the setup is done 
+
+finally, use this command to start the server 
+
+npx webpack serve --mode development
+
+or 
+
+insert this commaa=nd in script in package.json as shrotcut and run it.
+
+
+
+setup process:
+**************
+
+
+Components should start from capital letters
+
+shortcut
+&copy; = copyright symbol
+
+CAUTION:
+
+never use static values in react. use props to display data/value in jsx.
+
+
+
+components is over
+
+Day 2 = 27/10/23 target = upto react list and keys 
+React click events
+******************
+
+1) onclick = do the function while clicking
+to run a function with paramater use anonymous/arrow function to send the paramater
+()=> function name 
+
+important topic is event i.e., e 
+e.target is nothing but a whole tag elements
+
+useState 
+ipo enaku oru function run aaganum apdina antha whole page um reload agama nadakanum athukku useState use pannanum 
+if we want to import a hook, use {} to import them
+eg: import {useState} from 'react';
+
+you cannot call a useState hook in a condition
+
+useState will return an array of values which contains two values
+
+eg: enta oru function athu use panni oru element oda text value change pannanum without loading the whole page.
+so const [count , setCount] = useState(0)
+ithula first parameter than input that is count so useState kulla ena value kudukurano atha than first parameter count variable hold panikum then setCount ethukku irukura first paramater oda value ah change pannanum, atha change panni first paramater laye pass panni op show pannum. the thing is ithu ethume whole page ah reload pannama nadakkum. that is useState hook.
+
+For practise, don't use object inside the useState hooks
+it will make your code more complex to read.
+
+cautions in useState:
+if we are using localStorage oe API in our application for some dev or realtime purpose, namba antha localStorage or APi ya useState la kudukkum pothu, athula entha valueum ilana app may crash. so to fix that, use pipe ||  
+
+
+
+
+
+
+
+
+Day 3 to Day 5 (28/10/2023 - 30/10/2023) => topic : { routers, hooks, redux} 
+
+Done => { List and Keys, Icons, Props and prop drilling,  Controlled Inputs, [useRef, useEffect]Hooks, Local Storage, API, CRUD,}
+
+Props and prop drilling
+***********************
+
+Props is basic fundamentals in React. 
+it used to transfer or store data between components.
+this props will make the components to act like parent and child, this is similar to inheritance.
+
+NOTE: prop is also known as object
+
+task: 
+now, i'm going to change my content jsx file by giving prop value my name.
+
+Namba name nu oru attribute create pannathuku aprem atha content jsx file Content function la implement pannitom as "naming". then, as we said before props is also called as props. so, naming.name nu call panni value assign panniyachi 
+ithu oru prop method 
+or 
+destructuring use panni direct ah value assign panna mudium i.e., 
+in first line, const Content = (naming) =>....
+ithula naming ku pathila {name} nu direct attribute pass pannamudium
+
+In 23rd line, greet = `Good Afternoon, ${naming.name}`; 
+instead of using naming.name, now we can use {name}
+this is another method of props
+
+case study:
+
+if namba api use pannum pothu value pass aagalana then, it won't work, right ?
+so, to avoid that ,we use default props.
+
+Content.defaultProps = {
+    given attribute : "value
+}
+
+
+useRef
+******
+
+case study to learn useRef
+
+ipo na todo list work panitu irukkan, na add item la oru item type panathum enter press panna add aguthu and focus add item bar laye irukku but incase, na plus button click panna additem bar ku focus pogala.
+so itha rectify panrathuku useRef use panna porom.
+
+soln:
+    Simple, useref call panitu atha input la address pananum 
+useRef kita oru property iruku "current".
+atha use panni focus() change panrom.
+
+this is how useRef works.
+
+useEffect
+*********
+
+oru input or dependency oda state marum pothu than useState velai seiyum.
+if dependency list ah input la kudukkum pothu.   
+
+useEffect oda base code
+
+useEffect(()=>{},[])
+                  ^
+ithula irukura [ ] than {dependency list or input list}, intha dl or il oda state change aagum pothu useEffect velai seiyum.
+
+
+API
+***
+
+we are now going to create a full fake rest api in a directory called data
+(educational purposes....)
+
+
+Note:
+To create this process, we need to write this command,
+npx json-server -p {port number} -w data/db.json
+
+
+cautions: do not use the same port number in which the pge is loaded....
+
+working : if you get this,GET /items 200 48.148 ms - 201
+
+we can use different type of request 
+
+GET: we can give request to the server and get the info from them.
+
+POST: insert new data
+
+PATCH: we can update using patch
+
+DELETE: delete/remove data using delete
+
+namakku sila time errors olunga show aagathu. so, atha rectify panrathuku namba errors ah oru useState la potu show pannalam.
+
+error ah rectify panrathuku condition poda porom 
+
+CRUD
+****
+Now it's time for CRUD operations
+it is nothing but {create, read, update, delete}
+
+here in postOpt, we are going to add a new item,so elam list um anupurathuku pathila new ah add pora antha value ah matum insert pannale pothum.
+
+GET:read
+POST : create
+PATCH: update
+DELETE:delete
+
+NOTE: for update, we have to mention the specific place to update things, bcoz api cannot find it on it's own.
+
+delete and create pannum pothu kandippa id update paananum.important thing athu..... 
+
+Routers
+*******
+
+React router is like anchor tag in html,but ithu component ah navigate panra oru spl thing. 
+
+Types of routers;
+
+BrowserRouter
+HashRouter
+MemoryRouter
+StaticRouter
+Next.js Router (optional use)
+
+
+
+
+browser router is used to make the app file act as a router.
+
+Note import {BrowserRouter, Routes, Route, Link} from ReactDOM fro routing process.
+
+html la epdi anchor tag irukkutho athe mari router la "Link" nu oru element irukku. 
+
+eg:
+<Link to="/">Home</Link>
+<Routes>
+  <Route path='/' element={component name} />
+</Routes>
+
+in the path "/" this is called as index(Starting) page.
+
+incase if you want to move to any specific id in your page 
+
+<Link to="/postpage">Home</Link>
+<Routes>
+  <Route path='/postpage/:id' element={component name} />
+</Routes>
+
+this ":id" will act as specific place to route.
+
+route ah use oru value get panranah atha epdi display pannalamna athuku oru hooks irukku..
+
+UseParam:
+*********
+
+intha hook ethuku use panromnah router ah use panni value pass panrathukaga
+Note : {it is one of the powerful thing to learn}
+
+route la innoru feature thing irukku which is, ipo namba oru thing search panrom la athu anga illana 404 not found nu show panna vekkamudium...
+
+<Link to="/postpage">Home</Link>
+<Routes>
+  <Route path='/postpage/:id' element={component name} />
+  <Route path='*' element={component name} />
+</Routes>
+* mentioned as 404 server not found...
+
+
+Nested Routes:
+
+we can use nest routes into another routes...
+
+<Link to="/postpage">Home</Link>
+<Routes>
+  <Route path='/postpage'>
+    <Route index element={component name} />
+    <Route path=':id' element={component name} />
+    <Route path='*' element={component name} />
+  </Route>  
+</Routes>
+
+index will mention as starting page for postpage parts.
+
+
+
+

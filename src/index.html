@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/Images/Task lgo.png"
+      type="image/x-icon"
+    />
+    <title>ListLoom</title>
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        checkScreenWidth();
+      });
+
+      window.addEventListener("resize", () => {
+        checkScreenWidth();
+      });
+
+      function checkScreenWidth() {
+        // Set a threshold width for mobile devices (you can adjust this value)
+        const mobileWidthThreshold = 768;
+
+        // Get the current screen width
+        const screenWidth =
+          window.innerWidth ||
+          document.documentElement.clientWidth ||
+          document.body.clientWidth;
+
+        // Check if the screen width is below the threshold
+        if (screenWidth > mobileWidthThreshold) {
+          // Display an alert
+          // alert(
+          //   "It's only for mobile devices, so use them for better experience..Thank you."
+          // );
+          // setTimeout(() => {
+          //   checkScreenWidth();
+          // }, 5000);
+        }
+      }
+    </script>
+  </head>
+  <body class="font-poppins hide-scrollbar">
+    <div id="root"></div>
+    <script type="module" src="main.jsx"></script>
+  </body>
+</html>

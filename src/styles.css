@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* for check box */
+input[type="checkbox"] {
+  @apply w-8 h-8 min-w-fit appearance-none bg-white border rounded-3xl;
+}
+
+input[type="checkbox"]:checked {
+  @apply bg-white border-blue-300;
+}
+
+input[type="checkbox"]:checked::before {
+  @apply content-['✔'] text-blue-500 text-4xl;
+}

@@ -1,0 +1,108 @@
+
+
+👇🏼
+
+
+pm_2305
+
+Pm_2305
+
+
+email validate
+^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+
+
+https://lisloommv.onrender.com/users
+
+http://localhost:2305/users
+
+npx json-server -p 2305 -w Db/db.json
+
+Re arranging Works using routes
+
+
+
+
+
+<>
+<div>
+    {go === "List" ? (
+    <div className=" list work flex"></div>
+    ) : (
+    <div className="flex md:flex-row flex-col justify-around gap-5 self-center">
+        <div
+        onClick={() => {
+            setShow("");
+        }}
+        className="text-center md:mx-0 mx-auto mt-5 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
+        >
+        <button>Add new Task</button>
+        </div>
+        <div
+        className={`md:top-[15%] top-[10%] md:left-[20%] left-[5%] absolute md:w-[30%] w-[90%] md:h-[8%] h-[10%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
+            show === "hidden" ? "hidden" : ""
+        }`}
+        >
+        <Inputlist
+            newitem={newitem}
+            setNewitem={setNewitem}
+            submitted={submitted}
+            show={show}
+            setShow={setShow}
+        />
+        </div>
+        <div className=" flex p-1 md:w-4/5 h-fit">
+        <i
+            onClick={() => {
+            setCal("");
+            }}
+            className="uil uil-calendar-alt text-4xl md:mt-2 mt-2 md:pt-1 rounded-xl text-black text-center md:w-[6%] w-[10%] p-1 h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
+        ></i>
+
+        <SearchBar search={search} setSearch={setSearch} />
+        </div>
+        <div
+        className={`absolute bg-white text-black md:top-[25%] top-[28%] md:left-[25%] p-4 md:w-[25%] h-fit md:h-fit w-[60%] rounded-lg pt-8 transition-all ${
+            Cal === "hidden" ? "hidden" : ""
+        } `}
+        >
+        <i
+            onClick={() => setCal("hidden")}
+            className="uil uil-times text-3xl absolute md:left-[90%] left-[85%] bottom-[88%] transition-all cursor-pointer"
+        ></i>
+        <div>
+            <Calendar
+            currentMonth={currentMonth}
+            today={today}
+            setToday={setToday}
+            selectDate={selectDate}
+            setSelectDate={setSelectDate}
+            setCal={setCal}
+            />
+        </div>
+        </div>
+    </div>
+    )}
+</div>
+<div className="content bg-slate-300 rounded min-h-[65%] overflow-y-auto p-2 hide-scrollbar scroll-smooth">
+    <Content
+    userTask={userTask.filter((item) =>
+        item.work.toLowerCase().includes(search.toLowerCase())
+    )}
+    newitem={newitem}
+    setNewitem={setNewitem}
+    search={search}
+    setSearch={setSearch}
+    fetchErr={fetchErr}
+    isLoading={isLoading}
+    submitted={submitted}
+    go={go}
+    setGo={setGo}
+    checks={checks}
+    deletes={deletes}
+    />
+</div>
+</>
+
+
+
